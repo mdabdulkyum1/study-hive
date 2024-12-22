@@ -169,7 +169,7 @@ const Navbar = () => {
           </div>
         ) : (
           <>
-            <div className="space-x-1">
+            <div className="flex items-center space-x-1">
               <Link
                 to="/login"
                 className="btn btn-sm bg-primary text-white transition-colors"
@@ -179,7 +179,7 @@ const Navbar = () => {
 
               <Link
                 to="/register"
-                className="btn btn-sm bg-primary text-white transition-colors hidden md:block"
+                className="btn btn-sm bg-primary text-white transition-colors hidden md:flex"
               >
                 Register
               </Link>

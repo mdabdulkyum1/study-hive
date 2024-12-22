@@ -1,10 +1,10 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import ThemeToggle from "./ThemeToggle";
-import useAuth from './../../hooks/useAuth';
+// import useAuth from './../../hooks/useAuth';
 
 const Navbar = () => {
 
-  const {handelGoogleLogin} = useAuth()
+  // const {} = useAuth()
 
 
   const links = (
@@ -54,11 +54,13 @@ const Navbar = () => {
       </div>
       <div className="navbar-end flex items-center gap-2">
         <ThemeToggle />
-        <button onClick={handelGoogleLogin}
+        <Link to="/login">
+           <button
           className="btn bg-primary text-white hover:bg-light-accent dark:hover:bg-dark-accent transition"
         >
           Login
-        </button>
+           </button>
+        </Link>
       </div>
     </div>
   );

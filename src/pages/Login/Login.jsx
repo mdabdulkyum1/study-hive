@@ -2,12 +2,42 @@ import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Lottie from "lottie-react";
 import loginAnim from '../../../public/lottie/login.json'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
+
+
+
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  
+
+  const {signUser} = useAuth()
+  const navigate = useNavigate()
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevState) => !prevState);
+  };
+
+  const handelLogin = async (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const formData = new FormData(form);
+    const formObject = Object.fromEntries(formData.entries());
+
+    const email = formObject.email;
+    const password = formObject.password;
+
+    try {
+      await signUser(email, password);
+      form.reset();
+      navigate('/');
+      Swal.fire({title: 'Success', icon:'success', text: "Login successfully!"})
+    } catch (error) {
+      Swal.fire({title: 'Error!', icon:'error', text: `${error.message}`})
+      console.error(error);
+    }
   };
 
   return (
@@ -23,7 +53,7 @@ const Login = () => {
           <h1 className="text-3xl font-bold text-light-text dark:text-dark-text text-center my-4">
             Login Now!
           </h1>
-          <form className="card-body">
+          <form onSubmit={handelLogin}  className="card-body">
             {/* Email Input */}
             <div className="form-control">
               <label className="label">
@@ -33,6 +63,7 @@ const Login = () => {
               </label>
               <input
                 type="email"
+                name="email"
                 placeholder="Enter your email"
                 className="input input-bordered bg-light-bg dark:bg-dark-bg text-light-text dark:text-dark-text"
                 required
@@ -49,6 +80,7 @@ const Login = () => {
               <div className="relative">
                 <input
                   type={showPassword ? "text" : "password"}
+                  name="password"
                   placeholder="Enter your password"
                   className="input input-bordered bg-light-bg dark:bg-dark-bg text-light-text dark:text-dark-text pr-10 w-full"
                   required

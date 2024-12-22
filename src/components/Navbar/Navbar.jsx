@@ -52,7 +52,7 @@ const Navbar = () => {
         <a
           className="btn bg-primary text-white hover:bg-light-accent dark:hover:bg-dark-accent transition"
         >
-          Button
+          Login
         </a>
       </div>
     </div>

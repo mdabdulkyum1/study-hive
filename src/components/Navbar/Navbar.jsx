@@ -1,31 +1,76 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import ThemeToggle from "./ThemeToggle";
-import useAuth from './../../hooks/useAuth';
+import useAuth from "./../../hooks/useAuth";
 import { Tooltip } from "react-tooltip";
+import logo from "../../assets/logo.png";
 
 const Navbar = () => {
-
-  const {user, loading, logOut} = useAuth()
+  const { user, loading, logOut } = useAuth();
 
   const navigate = useNavigate();
   const handelLogOut = async () => {
-    try{
-      await logOut()
-      navigate('/login')
-    }catch(error){
+    try {
+      await logOut();
+      navigate("/login");
+    } catch (error) {
       console.error(error);
-      
     }
-  }
+  };
 
   const links = (
     <>
-      <li><NavLink to="/" className="text-light-text dark:text-dark-text hover:text-light-accent dark:hover:text-dark-accent transition">Home</NavLink></li>
-      <li><NavLink to="/about" className="text-light-text dark:text-dark-text hover:text-light-accent dark:hover:text-dark-accent transition">About</NavLink></li>
-      <li><NavLink to="/contact" className="text-light-text dark:text-dark-text hover:text-light-accent dark:hover:text-dark-accent transition">Contact</NavLink></li>
+      <li>
+        <NavLink
+          to="/"
+          className="text-light-text dark:text-dark-text hover:text-light-accent dark:hover:text-dark-accent transition"
+        >
+          Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/assignments"
+          className="text-light-text dark:text-dark-text hover:text-light-accent dark:hover:text-dark-accent transition"
+        >
+          Assignments
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/pending-assignments"
+          className="text-light-text dark:text-dark-text hover:text-light-accent dark:hover:text-dark-accent transition"
+        >
+          Pending Assignments
+        </NavLink>
+      </li>
     </>
   );
-  
+  const dropdownLinks = (
+    <>
+      <li>
+        <button className="btn-sm rounded-lg">
+        <NavLink
+          to="/create-assignments"
+          className="hover:text-light-accent dark:hover:text-dark-accent transition"
+        >
+          Create Assignments
+        </NavLink>
+
+        </button>
+      </li>
+      <li>
+        <button className="btn-sm rounded-lg ">
+        <NavLink
+          to="/my-attempted-assignments"
+          className="hover:text-light-accent dark:hover:text-dark-accent transition"
+        >
+          My Attempted Assignments
+        </NavLink>
+        </button>
+       
+      </li>
+    </>
+  );
 
   return (
     <div className="navbar bg-light-bg dark:bg-dark-bg border-b border-light-border dark:border-dark-border">
@@ -54,11 +99,18 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <a
-          className="btn btn-ghost text-xl text-primary dark:text-dark-text font-bold"
-        >
-          StudyHive
-        </a>
+        <div className="flex items-center gap-3">
+          <Link to="/">
+            <img
+              src={logo}
+              alt="Logo"
+              className="w-16 rounded-lg hidden md:block"
+            />
+          </Link>
+          <h1 className="text-xl text-primary dark:text-dark-text font-bold">
+            StudyHive
+          </h1>
+        </div>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
@@ -69,65 +121,70 @@ const Navbar = () => {
           <div className="border skeleton h-10 w-10 shrink-0 rounded-full"></div>
         ) : user ? (
           <div className="flex items-center gap-2">
-          <div className="dropdown dropdown-end">
-            <div
-              tabIndex={0}
-              role="button"
-              className="btn btn-ghost btn-circle avatar"
-            >
-              <div className="w-10 rounded-full border border- ">
-                <Tooltip id="my-tooltip" className="z-50"   place="left" />
-                <img
-                  alt={user?.displayName}
-                  src={user?.photoURL}
-                  data-tooltip-id="my-tooltip" 
-                  data-tooltip-content={`${user?.displayName}`}
-                />
+            <div className="dropdown dropdown-end">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle avatar"
+              >
+                <div className="w-10 rounded-full border border- ">
+                  <Tooltip id="my-tooltip" className="z-50" place="left" />
+                  <img
+                    alt={user?.displayName}
+                    src={user?.photoURL}
+                    data-tooltip-id="my-tooltip"
+                    data-tooltip-content={`${user?.displayName}`}
+                  />
+                </div>
               </div>
-            </div>
-            <ul
-              tabIndex={0}
-              className="bg-base-300 menu menu-sm dropdown-content rounded-box z-[10] mt-3 w-52 p-2 shadow dark:bg-dark-secondary dark:text-dark-text transition-colors"
-            >
-              <li className="text-center dark:text-gray-600">
-                {user?.displayName}
-              </li>
-              <li>
-                <button
-                  onClick={handelLogOut}
-                  className="btn bg-primary text-white transition-colors"
-                >
-                  Logout
-                </button>
-              </li>
-            </ul>
-          </div>
-          <button
-                  onClick={handelLogOut}
-                  className="btn-sm bg-primary text-white rounded-md transition-colors"
-                >
-                  Logout
-                </button>
-          </div>
+              <ul
+                tabIndex={0}
+                className="dropdown-content space-y-1 bg-light-bg  border border-transparent dark:border-white rounded-lg z-10 mt-3 p-4 shadow-lg w-64 transition-all duration-300"
+              >
+                {/* User Display Name */}
+                <li className="text-center text-lg font-semibold  mb-2">
+                  {user?.displayName || "Guest"}
+                </li>
 
-        ) : (<>
-            <div className="space-x-1">
-              
-          <Link
-            to="/login"
-            className="btn btn-sm bg-primary text-white transition-colors"
-          >
-            Login
-          </Link>
-              
-          <Link
-            to="/register"
-            className="btn btn-sm bg-primary text-white transition-colors"
-          >
-            Register
-          </Link>
+                {/* Dropdown Links */}
+                {dropdownLinks}
+
+                {/* Logout Button */}
+                <li className="mt-2">
+                  <button
+                    onClick={handelLogOut}
+                    className="btn btn-primary btn-sm w-full text-white hover:bg-light-accent dark:hover:bg-dark-accent dark:text-white transition-all duration-200"
+                  >
+                    Logout
+                  </button>
+                </li>
+              </ul>
             </div>
-        </>
+            <button
+              onClick={handelLogOut}
+              className="btn-sm bg-primary text-white rounded-md transition-colors"
+            >
+              Logout
+            </button>
+          </div>
+        ) : (
+          <>
+            <div className="space-x-1">
+              <Link
+                to="/login"
+                className="btn btn-sm bg-primary text-white transition-colors"
+              >
+                Login
+              </Link>
+
+              <Link
+                to="/register"
+                className="btn btn-sm bg-primary text-white transition-colors hidden md:block"
+              >
+                Register
+              </Link>
+            </div>
+          </>
         )}
       </div>
     </div>

@@ -1,18 +1,63 @@
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Lottie from "lottie-react";
-import registerAnim from '../../../public/lottie/register.json'
-import { Link } from "react-router-dom";
-
+import registerAnim from "../../../public/lottie/register.json";
+import { Link, useNavigate } from "react-router-dom";
+import useAuth from "./../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [err, setErr] = useState("");
+
+  const { createUser, profileUpdate, setUser } = useAuth();
+
+  const navigate = useNavigate();
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevState) => !prevState);
   };
 
-  
+  const handelRegister = async (e) => {
+    e.preventDefault();
+
+    setErr("");
+
+    const form = e.target;
+    const formData = new FormData(form);
+    const formObject = Object.fromEntries(formData.entries());
+
+    const name = formObject.name;
+    const email = formObject.email;
+    const photo = formObject.photo;
+    const password = formObject.password;
+    
+    if (password.length < 6) {
+      setErr("Password must be at least 6 characters!");
+      return;
+    }
+    if (!/[A-Z]/.test(password)) {
+      setErr("Password must have an Uppercase letter!");
+      return;
+    }
+    if (!/[a-z]/.test(password)) {
+      setErr("Password must have a Lowercase letter!");
+      return;
+    }
+
+
+    try {
+      const result = await createUser(email, password);
+      await profileUpdate(name, photo);
+      setUser({ ...result.user, displayName: name, photoURL: photo });
+      form.reset();
+      navigate('/');
+      Swal.fire({title: 'Success', icon:'success', text: "Register successfully!"})
+    } catch (error) {
+      Swal.fire({title: 'Error!', icon:'error', text: `${error.message}`})
+      console.error(error);
+    }
+  };
 
   return (
     <div className="hero min-h-screen bg-light-bg dark:bg-dark-bg">
@@ -22,12 +67,12 @@ const Register = () => {
           <Lottie animationData={registerAnim} loop={true}></Lottie>
         </div>
 
-        {/* Left-Side Login Form */}
+        {/* Left-Side Register Form */}
         <div className="card w-full max-w-sm bg-light-bg dark:bg-dark-bg shadow-2xl">
           <h1 className="text-3xl font-bold text-light-text dark:text-dark-text text-center my-4">
             Register Now!
           </h1>
-          <form className="card-body">
+          <form onSubmit={handelRegister} className="card-body">
             {/* Name Input */}
             <div className="form-control">
               <label className="label">
@@ -37,6 +82,7 @@ const Register = () => {
               </label>
               <input
                 type="text"
+                name="name"
                 placeholder="Enter your Name"
                 className="input input-bordered bg-light-bg dark:bg-dark-bg text-light-text dark:text-dark-text"
                 required
@@ -51,13 +97,14 @@ const Register = () => {
               </label>
               <input
                 type="email"
+                name="email"
                 placeholder="Enter your email"
                 className="input input-bordered bg-light-bg dark:bg-dark-bg text-light-text dark:text-dark-text"
                 required
               />
             </div>
 
-            {/* Password Input with Toggle */}
+            {/* Photo Input */}
             <div className="form-control relative">
               <label className="label">
                 <span className="label-text text-light-text dark:text-dark-text">
@@ -67,11 +114,11 @@ const Register = () => {
               <div className="relative">
                 <input
                   type="text"
+                  name="photo"
                   placeholder="Enter your Photo Url"
                   className="input input-bordered bg-light-bg dark:bg-dark-bg text-light-text dark:text-dark-text pr-10 w-full"
                   required
                 />
-                
               </div>
             </div>
 
@@ -85,6 +132,7 @@ const Register = () => {
               <div className="relative">
                 <input
                   type={showPassword ? "text" : "password"}
+                  name="password"
                   placeholder="Enter your password"
                   className="input input-bordered bg-light-bg dark:bg-dark-bg text-light-text dark:text-dark-text pr-10 w-full"
                   required
@@ -98,20 +146,23 @@ const Register = () => {
                 </div>
               </div>
             </div>
-
+            {err && <p className="text-red-500 mt-1">{err}</p>}
             {/* Register Button */}
             <div className="form-control mt-6">
               <button className="btn bg-primary text-white hover:bg-light-accent dark:hover:bg-dark-accent">
                 Register
               </button>
             </div>
-          {/* Redirect to Register */}
-        <p className="text-center mt-4 text-gray-600">
-        Already have an account?{" "}
-          <Link to="/login" className="text-primary font-bold hover:underline">
-            Login here
-          </Link>
-        </p>
+            {/* Redirect to Register */}
+            <p className="text-center mt-4 text-gray-600">
+              Already have an account?{" "}
+              <Link
+                to="/login"
+                className="text-primary font-bold hover:underline"
+              >
+                Login here
+              </Link>
+            </p>
           </form>
         </div>
       </div>
@@ -119,5 +170,4 @@ const Register = () => {
   );
 };
 
-export default Register
-;
+export default Register;

@@ -4,12 +4,14 @@ import './index.css'
 import { RouterProvider } from 'react-router-dom'
 import router from './routes/router'
 import AuthProviders from './providers/AuthProviders'
+import BackToTop from './components/shared/BackToTop/BackToTop'
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AuthProviders>
         <RouterProvider router={router} />
+        <BackToTop></BackToTop>
     </AuthProviders>
   </StrictMode>,
 )

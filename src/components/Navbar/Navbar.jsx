@@ -148,7 +148,7 @@ const Navbar = () => {
                 </li>
 
                 {/* Dropdown Links */}
-                {dropdownLinks}
+                <ul className="">{dropdownLinks}</ul>
 
                 {/* Logout Button */}
                 <li className="mt-2">

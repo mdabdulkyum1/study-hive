@@ -33,7 +33,7 @@ function AuthProviders({ children }) {
       photoURL: photo,
     });
   };
-  const handelGoogleLogin = () => {
+  const createUserWithGoogle = () => {
     setLoading(true);
     return signInWithPopup(auth, provider);
   };
@@ -60,7 +60,7 @@ function AuthProviders({ children }) {
     createUser,
     signUser,
     profileUpdate,
-    handelGoogleLogin,
+    createUserWithGoogle,
     logOut,
   };
   return (

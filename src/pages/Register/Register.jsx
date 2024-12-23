@@ -5,6 +5,7 @@ import registerAnim from "../../../public/lottie/register.json";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "./../../hooks/useAuth";
 import Swal from "sweetalert2";
+import GoogleLogin from "../../components/shared/GoogleLogin/GoogleLogin";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -152,6 +153,9 @@ const Register = () => {
               <button className="btn bg-primary text-white hover:bg-light-accent dark:hover:bg-dark-accent">
                 Register
               </button>
+              
+            <div className="divider">or</div>
+          <GoogleLogin></GoogleLogin>
             </div>
             {/* Redirect to Register */}
             <p className="text-center mt-4 text-gray-600">

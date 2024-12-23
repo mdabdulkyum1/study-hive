@@ -5,6 +5,7 @@ import loginAnim from '../../../public/lottie/login.json'
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+import GoogleLogin from "../../components/shared/GoogleLogin/GoogleLogin";
 
 
 
@@ -111,6 +112,8 @@ const Login = () => {
                 Login
               </button>
             </div>
+            <div className="divider">or</div>
+          <GoogleLogin></GoogleLogin>
           {/* Redirect to Register */}
         <p className="text-center mt-4 text-gray-600">
           Don{`'`}t have an account?{" "}
@@ -122,6 +125,7 @@ const Login = () => {
           </Link>
         </p>
           </form>
+
         </div>
       </div>
     </div>

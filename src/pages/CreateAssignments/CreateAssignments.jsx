@@ -5,6 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import useAuth from "../../hooks/useAuth";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 function CreateAssignments() {
   const [startDate, setStartDate] = useState(new Date());
@@ -12,11 +13,11 @@ function CreateAssignments() {
 
   const mutation = useMutation({
     mutationFn: (data)=> {
-      return axios.post('/aip', data);
+      return axios.post(`${import.meta.env.VITE_server_url}/create-assignments`, data);
     }
   })
 
-  const handelSubmit =  e => {
+  const handelSubmit =  async e => {
       e.preventDefault();
 
       const form = e.target;
@@ -24,10 +25,17 @@ function CreateAssignments() {
       const formObject = Object.fromEntries(formElement.entries());
 
       const creator = {name: user?.displayName, email:user?.email }
+      const marks = parseFloat(formObject.marks);
+      const assignmentInfo = {...formObject, marks, creator}
 
-      const assignmentInfo = {...formObject, creator}
-
-      mutation.mutate(assignmentInfo);
+      try {
+        const {data} = await mutation.mutateAsync(assignmentInfo)
+         if(data?.insertedId){
+           Swal.fire({title: "Success", text:"Successfully Assignment Data Updated server!", icon:"success"});
+         }
+      } catch (error) {
+        console.error(error)
+      } 
     
   }
 

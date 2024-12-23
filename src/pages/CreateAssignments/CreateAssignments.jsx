@@ -31,6 +31,7 @@ function CreateAssignments() {
       try {
         const {data} = await mutation.mutateAsync(assignmentInfo)
          if(data?.insertedId){
+           form.reset();
            Swal.fire({title: "Success", text:"Successfully Assignment Data Updated server!", icon:"success"});
          }
       } catch (error) {

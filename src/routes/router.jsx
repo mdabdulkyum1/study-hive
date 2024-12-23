@@ -3,6 +3,10 @@ import Layout from "../layout/Layout";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
+import CreateAssignments from './../pages/CreateAssignments/CreateAssignments';
+import Assignments from './../pages/Assignments/Assignments';
+import MyAttemptedAssignments from './../pages/MyAttemptedAssignments/MyAttemptedAssignments';
+import PendingAssignments from './../pages/PendingAssignments/PendingAssignments';
 
 const router = createBrowserRouter([
     {
@@ -13,6 +17,25 @@ const router = createBrowserRouter([
                 path: "/", 
                 element: <Home></Home>
             }, 
+            {
+                path: "/create-assignments",
+                element: <CreateAssignments></CreateAssignments>
+            },
+            {
+                path: "/assignments",
+                element: <Assignments></Assignments>
+            },
+            {
+                path: "/my-attempted-assignments",
+                element: <MyAttemptedAssignments></MyAttemptedAssignments>
+            },
+            {
+                path: "/pending-assignments",
+                element: <PendingAssignments></PendingAssignments>
+            },
+            {},
+            {},
+            {},
             {
                 path: "/login",
                 element: <Login></Login>

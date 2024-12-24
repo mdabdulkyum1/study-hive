@@ -35,6 +35,8 @@ const Navbar = () => {
           Assignments
         </NavLink>
       </li>
+    {
+      user && 
       <li>
         <NavLink
           to="/pending-assignments"
@@ -43,6 +45,8 @@ const Navbar = () => {
           Pending Assignments
         </NavLink>
       </li>
+    }
+
     </>
   );
   const dropdownLinks = (

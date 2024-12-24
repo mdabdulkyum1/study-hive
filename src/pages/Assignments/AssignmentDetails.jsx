@@ -6,6 +6,8 @@ import axios from "axios";
 const AssignmentDetails = () => {
   const assignment = useLoaderData();
 
+  const { title, marks, creator } = assignment || {};
+
   const { user } = useAuth();
   const email = user?.email;
   const { id } = useParams();
@@ -44,6 +46,7 @@ const AssignmentDetails = () => {
     ></textarea>
   </div>
 </form>
+
       `,
       focusConfirm: false,
       confirmButtonText: "Submit",
@@ -60,6 +63,9 @@ const AssignmentDetails = () => {
         }
 
         const submittedData = {
+          title,
+          totalMarks:marks,
+          examineeName: creator?.name,
           googleDocsLink,
           quickNote,
           assignmentId: id,

@@ -4,7 +4,6 @@ import { Navigate, useLocation } from "react-router-dom";
 
 function PrivateRoute(props) {
   const { children } = props || {};
-
   const { user, loading } = useAuth();
   const location = useLocation();
 
@@ -17,9 +16,9 @@ function PrivateRoute(props) {
       </>
     );
   }
-
+  
   if(!user){
-    <Navigate to={'/login'} state={location.pathname}></Navigate>
+   return <Navigate to={'/login'} state={location.pathname}></Navigate>
   }
 
   return children;

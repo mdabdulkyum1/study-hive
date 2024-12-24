@@ -3,6 +3,7 @@ import axios from "axios";
 import AssignmentsLoading from "../../components/shared/AssignmentsLoading/AssignmentsLoading";
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
+import { Link } from "react-router-dom";
 
 const Assignments = () => {
   const { user } = useAuth();
@@ -24,12 +25,10 @@ const Assignments = () => {
   if (isLoading) {
     return <AssignmentsLoading></AssignmentsLoading>;
   }
-
   // Handle error state
   if (isError) {
     return <div>Error loading assignments. Please try again later.</div>;
   }
-
   // Handle case where no assignments are available
   if (!assignments || assignments.length === 0) {
     return <div>No assignments found.</div>;
@@ -76,6 +75,7 @@ const Assignments = () => {
       }
     });
   };
+
   return (
     <div className="p-6 bg-light-bg dark:bg-dark-bg min-h-screen">
       <h1 className="text-2xl font-bold text-primary text-center mb-6">
@@ -91,7 +91,7 @@ const Assignments = () => {
           >
             {/* Thumbnail */}
             <img
-              src={assignment.thumbnail}
+              src={assignment.thumbnailUrl}
               alt={assignment.title}
               className="w-full h-48 object-cover"
             />
@@ -126,14 +126,12 @@ const Assignments = () => {
                 >
                   View
                 </button>
-                <button
-                  className="btn btn-sm bg-yellow-500 text-white hover:bg-yellow-600 px-4 py-2 rounded"
-                  onClick={() =>
-                    (window.location.href = `/assignments/update/${assignment._id}`)
-                  }
-                >
-                  Update
-                </button>
+                <Link to={`/update-assignment/${assignment._id}`}>
+                  <button className="btn btn-sm bg-yellow-500 text-white hover:bg-yellow-600 px-4 py-2 rounded">
+                    Update
+                  </button>
+                </Link>
+
                 <button
                   className="btn btn-sm bg-red-500 text-white hover:bg-red-600 px-4 py-2 rounded"
                   onClick={() => handleDelete(assignment._id)}

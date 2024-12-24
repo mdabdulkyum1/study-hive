@@ -44,7 +44,6 @@ const AssignmentDetails = () => {
     ></textarea>
   </div>
 </form>
-
       `,
       focusConfirm: false,
       confirmButtonText: "Submit",

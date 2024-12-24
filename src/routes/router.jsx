@@ -9,6 +9,7 @@ import MyAttemptedAssignments from "./../pages/MyAttemptedAssignments/MyAttempte
 import PendingAssignments from "./../pages/PendingAssignments/PendingAssignments";
 import PrivateRoute from "./PrivateRoute";
 import UpdateAssignment from "../pages/Assignments/UpdateAssignment";
+import AssignmentDetails from "../pages/Assignments/AssignmentDetails";
 
 const router = createBrowserRouter([
   {
@@ -20,7 +21,7 @@ const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
-        path: "/create-assignments",
+        path: "create-assignments",
         element: (
           <PrivateRoute>
             <CreateAssignments></CreateAssignments>
@@ -28,30 +29,34 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/assignments",
+        path: "assignments",
         element: <Assignments></Assignments>,
       },
       {
-        path: "/my-attempted-assignments",
+        path: "my-attempted-assignments",
         element: <MyAttemptedAssignments></MyAttemptedAssignments>,
       },
       {
-        path: "/pending-assignments",
+        path: "pending-assignments",
         element: <PrivateRoute><PendingAssignments></PendingAssignments></PrivateRoute>,
       },
       {
-        path: "/update-assignment/:id",
+        path: "update-assignment/:id",
         element: <PrivateRoute><UpdateAssignment></UpdateAssignment></PrivateRoute>,
-        loader: ({params}) => fetch(`${import.meta.env.VITE_server_url}/assignments/${params.id}`)
+        loader: ({params}) => fetch(`${import.meta.env.VITE_server_url}/assignment/${params.id}`)
+      },
+      {
+        path: "assignment/details/:id",
+        element: <PrivateRoute><AssignmentDetails></AssignmentDetails></PrivateRoute>,
+        loader: ({params}) => fetch(`${import.meta.env.VITE_server_url}/assignment/${params.id}`)
       },
       {},
-      {},
       {
-        path: "/login",
+        path: "login",
         element: <Login></Login>,
       },
       {
-        path: "/register",
+        path: "register",
         element: <Register></Register>,
       },
     ],

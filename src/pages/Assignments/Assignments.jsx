@@ -118,14 +118,13 @@ const Assignments = () => {
 
               {/* Action Buttons */}
               <div className="mt-4 flex justify-between">
-                <button
-                  className="btn btn-sm bg-primary text-white hover:bg-accent px-4 py-2 rounded"
-                  onClick={() =>
-                    (window.location.href = `/assignments/${assignment._id}`)
-                  }
-                >
-                  View
-                </button>
+                <Link to={`/assignment/details/${assignment._id}`}>
+                  <button
+                    className="btn btn-sm bg-primary text-white hover:bg-accent px-4 py-2 rounded">
+                    View
+                  </button>
+                </Link>
+
                 <Link to={`/update-assignment/${assignment._id}`}>
                   <button className="btn btn-sm bg-yellow-500 text-white hover:bg-yellow-600 px-4 py-2 rounded">
                     Update

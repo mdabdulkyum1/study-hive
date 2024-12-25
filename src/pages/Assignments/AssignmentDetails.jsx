@@ -2,6 +2,7 @@ import { useLoaderData, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
+import { Helmet } from "react-helmet-async";
 
 const AssignmentDetails = () => {
   const assignment = useLoaderData();
@@ -107,6 +108,10 @@ const AssignmentDetails = () => {
   };
 
   return (
+    <>
+    <Helmet>
+        <title>Assignment Details | Study Hive</title>
+    </Helmet>
     <div className="p-6 max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-md my-11">
       <img
         src={assignment.thumbnailUrl}
@@ -147,6 +152,7 @@ const AssignmentDetails = () => {
         Take Assignment
       </button>
     </div>
+    </>
   );
 };
 

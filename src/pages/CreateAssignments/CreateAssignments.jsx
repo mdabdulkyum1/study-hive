@@ -6,6 +6,7 @@ import useAuth from "../../hooks/useAuth";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 function CreateAssignments() {
   const [startDate, setStartDate] = useState(new Date());
@@ -96,6 +97,10 @@ function CreateAssignments() {
   };
 
   return (
+    <>
+      <Helmet>
+       <title>Create Assignment || Study Hive</title>
+    </Helmet>
     <div className="max-w-xl mx-auto p-6 bg-white dark:bg-gray-800 rounded-md shadow-md my-7">
       <h2 className="text-2xl font-bold mb-4 text-center text-gray-900 dark:text-white">
         Create Assignment
@@ -189,6 +194,8 @@ function CreateAssignments() {
         </button>
       </form>
     </div>
+    </>
+
   );
 }
 

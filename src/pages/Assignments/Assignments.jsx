@@ -8,6 +8,10 @@ import { debounce } from "lodash";
 import { useRef, useState } from "react";
 import dataNotFoundAnim from "../../../public/lottie/dataNotFound.json";
 import Lottie from "lottie-react";
+import { Helmet } from 'react-helmet-async';
+
+
+
 
 const Assignments = () => {
   const [difficultyLevel, setDifficultyLevel] = useState("All");
@@ -102,6 +106,10 @@ const Assignments = () => {
   };
 
   return (
+    <>
+    <Helmet>
+       <title>Assignments | Study Hive</title>
+    </Helmet>
     <div className="p-6 bg-light-bg dark:bg-gray-800 min-h-screen">
       <h1 className="text-2xl font-bold text-primary text-center mb-6">
         Assignments
@@ -221,6 +229,8 @@ const Assignments = () => {
         </div>
       )}
     </div>
+    </>
+
   );
 };
 

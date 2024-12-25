@@ -1,8 +1,12 @@
+import { Helmet } from "react-helmet-async";
 import Banner from "./Banner";
 
 const Home = () => {
   return (
     <>
+      <Helmet>
+        <title>Home | Study Hive</title>
+      </Helmet>
       <Banner></Banner>
       <section className="py-16 bg-light-bg dark:bg-dark-bg">
         <div className="container mx-auto px-4">

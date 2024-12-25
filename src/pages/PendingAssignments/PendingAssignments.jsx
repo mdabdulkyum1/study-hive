@@ -4,6 +4,7 @@ import TableLoading from "../../components/shared/TableLoading/TableLoading";
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
 import noPending from "../../assets/noPending.png";
+import { Helmet } from "react-helmet-async";
 
 function PendingAssignments() {
   const { user } = useAuth();
@@ -35,6 +36,10 @@ function PendingAssignments() {
   );
   if (!pendingAssignments || pendingAssignments.length === 0) {
     return (
+      <>
+      <Helmet>
+        <title> Pending Assignments | Study Hive</title>
+      </Helmet>
       <div className="h-[60vh] my-7">
         <div className="flex items-center justify-center">
           <img
@@ -44,6 +49,8 @@ function PendingAssignments() {
           />
         </div>
       </div>
+      </>
+
     );
   }
 
@@ -210,54 +217,59 @@ function PendingAssignments() {
   };
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-semibold mb-4 text-light-text dark:text-dark-text">
-        Pending Assignments
-      </h1>
-      <div className="overflow-x-auto">
-        <table className="table-auto w-full border-collapse border border-light-border dark:border-dark-border">
-          <thead>
-            <tr>
-              <th className="border px-4 py-2 text-left text-light-text dark:text-dark-text">
-                Assignment Title
-              </th>
-              <th className="border px-4 py-2 text-left text-light-text dark:text-dark-text">
-                Marks
-              </th>
-              <th className="border px-4 py-2 text-left text-light-text dark:text-dark-text">
-                Examinee Name
-              </th>
-              <th className="border px-4 py-2 text-left text-light-text dark:text-dark-text">
-                Action
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {pendingAssignments.map((assignment) => (
-              <tr key={assignment._id}>
-                <td className="border px-4 py-2 text-light-text dark:text-dark-text">
-                  {assignment.title || "No Title"}
-                </td>
-                <td className="border px-4 py-2 text-light-text dark:text-dark-text">
-                  {assignment.totalMarks || "Not Assigned"}
-                </td>
-                <td className="border px-4 py-2 text-light-text dark:text-dark-text">
-                  {assignment.examineeName || "Unknown"}
-                </td>
-                <td className="border px-4 py-2 text-light-text dark:text-dark-text">
-                  <button
-                    onClick={() => handelGiveMark(assignment._id)}
-                    className="px-4 py-2 bg-primary text-white rounded hover:bg-accent"
-                  >
-                    Give Mark
-                  </button>
-                </td>
+    <>
+      <Helmet>
+        <title> Pending Assignments | Study Hive</title>
+      </Helmet>
+      <div className="container mx-auto p-4">
+        <h1 className="text-2xl font-semibold mb-4 text-light-text dark:text-dark-text">
+          Pending Assignments
+        </h1>
+        <div className="overflow-x-auto">
+          <table className="table-auto w-full border-collapse border border-light-border dark:border-dark-border">
+            <thead>
+              <tr>
+                <th className="border px-4 py-2 text-left text-light-text dark:text-dark-text">
+                  Assignment Title
+                </th>
+                <th className="border px-4 py-2 text-left text-light-text dark:text-dark-text">
+                  Marks
+                </th>
+                <th className="border px-4 py-2 text-left text-light-text dark:text-dark-text">
+                  Examinee Name
+                </th>
+                <th className="border px-4 py-2 text-left text-light-text dark:text-dark-text">
+                  Action
+                </th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {pendingAssignments.map((assignment) => (
+                <tr key={assignment._id}>
+                  <td className="border px-4 py-2 text-light-text dark:text-dark-text">
+                    {assignment.title || "No Title"}
+                  </td>
+                  <td className="border px-4 py-2 text-light-text dark:text-dark-text">
+                    {assignment.totalMarks || "Not Assigned"}
+                  </td>
+                  <td className="border px-4 py-2 text-light-text dark:text-dark-text">
+                    {assignment.examineeName || "Unknown"}
+                  </td>
+                  <td className="border px-4 py-2 text-light-text dark:text-dark-text">
+                    <button
+                      onClick={() => handelGiveMark(assignment._id)}
+                      className="px-4 py-2 bg-primary text-white rounded hover:bg-accent"
+                    >
+                      Give Mark
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

@@ -65,6 +65,7 @@ const AssignmentDetails = () => {
         const submittedData = {
           title,
           totalMarks:marks,
+          obtainedMarks:0,
           examineeName: creator?.name,
           googleDocsLink,
           quickNote,

@@ -94,7 +94,7 @@ function MyAttemptedAssignments() {
                   {assignment.obtainedMarks || "Not graded"}
                 </td>
                 <td className="border px-4 py-2 text-light-text dark:text-dark-text">
-                  {assignment.feedback || "No feedback yet"}
+                  {assignment.feedBack || "No feedback yet"}
                 </td>
               </tr>
             ))}

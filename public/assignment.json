@@ -1,0 +1,147 @@
+[
+    {
+      "title": "Understanding JavaScript Closures",
+      "description": "Learn and implement closures in JavaScript.",
+      "marks": 60,
+      "thumbnailUrl": "https://i.ibb.co.com/vLKh2r8/Java-Script-Closures.png",
+      "difficulty": "Medium",
+      "dueDate": "2024-01-15T18:00:00.000Z",
+      "creator": {
+        "name": "Md Abdul Kyum",
+        "email": "kyummdabdul@gmail.com"
+      }
+    },
+    {
+      "title": "React State Management",
+      "description": "Build a counter app using React's useState hook.",
+      "marks": 60,
+      "thumbnailUrl": "https://i.ibb.co.com/sCbZwVR/React-State-Management.jpg",
+      "difficulty": "Easy",
+      "dueDate": "2024-01-20T18:00:00.000Z",
+      "creator": {
+        "name": "Md Abdul Kyum",
+        "email": "mdabdulkyum7@gmail.com"
+      }
+    },
+    {
+      "title": "Database Normalization",
+      "description": "Normalize a given dataset to the third normal form.",
+      "marks": 100,
+      "thumbnailUrl": "https://i.ibb.co.com/PYv5RpL/Database-Normalization.png",
+      "difficulty": "Hard",
+      "dueDate": "2024-01-25T18:00:00.000Z",
+      "creator": {
+        "name": "Md Abdul Kyum",
+        "email": "kyummdabdul@gmail.com"
+      }
+    },
+    {
+      "title": "CSS Grid Layout",
+      "description": "Design a responsive photo gallery using CSS Grid.",
+      "marks": 60,
+      "thumbnailUrl": "https://i.ibb.co.com/x8v2mm4/CSSGrid-Layout.png",
+      "difficulty": "Easy",
+      "dueDate": "2024-01-18T18:00:00.000Z",
+      "creator": {
+        "name": "Md Abdul Kyum",
+        "email": "mdabdulkyum7@gmail.com"
+      }
+    },
+    {
+      "title": "REST API Design",
+      "description": "Design and document a REST API for a blog application.",
+      "marks": 60,
+      "thumbnailUrl": "https://i.ibb.co.com/R3ND0pD/RESTAPIDesign.jpg",
+      "difficulty": "Medium",
+      "dueDate": "2024-01-22T18:00:00.000Z",
+      "creator": {
+        "name": "Md Abdul Kyum",
+        "email": "kyummdabdul@gmail.com"
+      }
+    },
+    {
+      "title": "Data Structures in JavaScript",
+      "description": "Implement and test basic data structures in JavaScript.",
+      "marks": 100,
+      "thumbnailUrl": "https://i.ibb.co.com/3vd8S2K/Data-Structures-Java-Script.png",
+      "difficulty": "Hard",
+      "dueDate": "2024-01-30T18:00:00.000Z",
+      "creator": {
+        "name": "Md Abdul Kyum",
+        "email": "mdabdulkyum7@gmail.com"
+      }
+    },
+    {
+      "title": "HTML Forms",
+      "description": "Create a registration form with validation.",
+      "marks": 60,
+      "thumbnailUrl": "https://i.ibb.co.com/NnZmhkF/HTMLForms.png",
+      "difficulty": "Easy",
+      "dueDate": "2024-01-12T18:00:00.000Z",
+      "creator": {
+        "name": "Md Abdul Kyum",
+        "email": "mdabdulkyum7@gmail.com"
+      }
+    },
+    {
+      "title": "Authentication with JWT",
+      "description": "Implement user authentication using JWT in a Node.js app.",
+      "marks": 100,
+      "thumbnailUrl": "https://i.ibb.co.com/8jTksfy/Authenticationwith-JWT.png",
+      "difficulty": "Hard",
+      "dueDate": "2024-01-28T18:00:00.000Z",
+      "creator": {
+        "name": "Md Abdul Kyum",
+        "email": "kyummdabdul@gmail.com"
+      }
+    },
+    {
+      "title": "GraphQL Basics",
+      "description": "Learn the basics of GraphQL by building a simple API.",
+      "marks": 60,
+      "thumbnailUrl": "https://i.ibb.co.com/3Czbzbh/Graph-QLBasics.png",
+      "difficulty": "Medium",
+      "dueDate": "2024-01-24T18:00:00.000Z",
+      "creator": {
+        "name": "Md Abdul Kyum",
+        "email": "mdabdulkyum7@gmail.com"
+      }
+    },
+    {
+      "title": "Flexbox Mastery",
+      "description": "Build a responsive navbar using Flexbox.",
+      "marks": 60,
+      "thumbnailUrl": "https://i.ibb.co.com/SN60d10/Flexbox-Mastery.jpg",
+      "difficulty": "Easy",
+      "dueDate": "2024-01-16T18:00:00.000Z",
+      "creator": {
+        "name": "Md Abdul Kyum",
+        "email": "mdabdulkyum7@gmail.com"
+      }
+    },
+    {
+      "title": "SQL Query Optimization",
+      "description": "Optimize the given SQL queries for better performance.",
+      "marks": 100,
+      "thumbnailUrl": "https://i.ibb.co.com/173sfxQ/SQLQuery-Optimization.png",
+      "difficulty": "Hard",
+      "dueDate": "2024-01-26T18:00:00.000Z",
+      "creator": {
+        "name": "Md Abdul Kyum",
+        "email": "mdabdulkyum7@gmail.com"
+      }
+    },
+    {
+      "title": "Vue.js Basics",
+      "description": "Create a to-do app using Vue.js.",
+      "marks": 60,
+      "thumbnailUrl": "https://i.ibb.co.com/7zWBqHy/Vue-Basics.png",
+      "difficulty": "Medium",
+      "dueDate": "2024-01-21T18:00:00.000Z",
+      "creator": {
+        "name": "Md Abdul Kyum",
+        "email": "mdabdulkyum7@gmail.com"
+      }
+    }
+  ]
+  

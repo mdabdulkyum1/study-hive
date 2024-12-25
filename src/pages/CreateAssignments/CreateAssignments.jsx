@@ -9,36 +9,91 @@ import Swal from "sweetalert2";
 
 function CreateAssignments() {
   const [startDate, setStartDate] = useState(new Date());
-  const {user} = useAuth();
+  const { user } = useAuth();
 
   const mutation = useMutation({
-    mutationFn: (data)=> {
-      return axios.post(`${import.meta.env.VITE_server_url}/create-assignments`, data);
+    mutationFn: (data) => {
+      return axios.post(
+        `${import.meta.env.VITE_server_url}/create-assignments`,
+        data
+      );
+    },
+  });
+
+  const handelSubmit = async (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const formElement = new FormData(form);
+    const formObject = Object.fromEntries(formElement.entries());
+
+    const { title, description, marks:defaultMarks, thumbnailUrl, difficulty, dueDate } = formObject;
+
+    // Validation Errors
+    const errors = [];
+  
+    // Title Validation
+    if (!title || title.length < 5 || title.length > 100) {
+      errors.push("Title must be between 5 and 100 characters.");
     }
-  })
+  
+    // Description Validation
+    if (!description || description.length < 10 || description.length > 1000) {
+      errors.push("Description must be between 10 and 1000 characters.");
+    }
+  
+    // Marks Validation
+    const marksValue = parseFloat(defaultMarks);
+    if (isNaN(marksValue) || marksValue < 0 || marksValue > 100) {
+      errors.push("Marks must be a number between 0 and 100.");
+    }
+  
+    // Thumbnail URL Validation
+    const urlPattern = /^https?:\/\/[^\s$.?#].[^\s]*$/gm;
+    if (!thumbnailUrl || !urlPattern.test(thumbnailUrl)) {
+      errors.push("Please provide a valid URL for the thumbnail.");
+    }
+  
+    // Difficulty Validation
+    const validDifficulties = ["Easy", "Medium", "Hard"];
+    if (!difficulty || !validDifficulties.includes(difficulty)) {
+      errors.push("Please select a valid difficulty level.");
+    }
+  
+    // Due Date Validation
+    if (!dueDate || new Date(dueDate) < new Date()) {
+      errors.push("Due date must be a valid date in the future.");
+    }
+  
+    // Handle Errors
+    if (errors.length > 0) {
+      Swal.fire({
+        title: "Validation Error",
+        text: errors.join("\n"),
+        icon: "error",
+        confirmButtonText: "OK",
+      });
+      return;
+    }
 
-  const handelSubmit =  async e => {
-      e.preventDefault();
+    const creator = { name: user?.displayName, email: user?.email };
+    const marks = parseFloat(formObject.marks);
+    const assignmentInfo = { ...formObject, marks, creator };
 
-      const form = e.target;
-      const formElement = new FormData(form);
-      const formObject = Object.fromEntries(formElement.entries());
-
-      const creator = {name: user?.displayName, email:user?.email }
-      const marks = parseFloat(formObject.marks);
-      const assignmentInfo = {...formObject, marks, creator}
-
-      try {
-        const {data} = await mutation.mutateAsync(assignmentInfo)
-         if(data?.insertedId){
-           form.reset();
-           Swal.fire({title: "Success", text:"Successfully Assignment Data Updated server!", icon:"success"});
-         }
-      } catch (error) {
-        console.error(error)
-      } 
-    
-  }
+    try {
+      const { data } = await mutation.mutateAsync(assignmentInfo);
+      if (data?.insertedId) {
+        form.reset();
+        Swal.fire({
+          title: "Success",
+          text: "Successfully Assignment Data Updated server!",
+          icon: "success",
+        });
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div className="max-w-xl mx-auto p-6 bg-white dark:bg-gray-800 rounded-md shadow-md my-7">
@@ -117,7 +172,12 @@ function CreateAssignments() {
           <label className="block text-gray-700 dark:text-gray-300">
             Due Date
           </label>
-          <DatePicker className="px-4 py-2 border rounded-md dark:bg-gray-700 dark:text-white" selected={startDate} name="dueDate" onChange={(date) => setStartDate(date)}/>
+          <DatePicker
+            className="px-4 py-2 border rounded-md dark:bg-gray-700 dark:text-white"
+            selected={startDate}
+            name="dueDate"
+            onChange={(date) => setStartDate(date)}
+          />
         </div>
 
         {/* Submit Button */}

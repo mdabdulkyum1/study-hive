@@ -20,6 +20,55 @@ const UpdateAssignment = () => {
       const difficulty = e.target.difficulty.value;
       const dueDate = startDate;
 
+      // Validation Errors
+      const errors = [];
+    
+      // Title Validation
+      if (!title || title.trim().length < 5 || title.trim().length > 100) {
+        errors.push("Title must be between 5 and 100 characters.");
+      }
+    
+      // Description Validation
+      if (!description || description.trim().length < 10 || description.trim().length > 1000) {
+        errors.push("Description must be between 10 and 1000 characters.");
+      }
+    
+      // Marks Validation
+      const marksValue = parseFloat(marks);
+      if (isNaN(marksValue) || marksValue < 60 || marksValue > 100) {
+        errors.push("Marks must be a number between 60 and 100.");
+      }
+    
+      // Thumbnail URL Validation
+      const urlPattern = /^https?:\/\/[^\s$.?#].[^\s]*$/gm;
+      if (!thumbnailUrl || !urlPattern.test(thumbnailUrl)) {
+        errors.push("Please provide a valid URL for the thumbnail.");
+      }
+    
+      // Difficulty Validation
+      const validDifficulties = ["Easy", "Medium", "Hard"];
+      if (!difficulty || !validDifficulties.includes(difficulty)) {
+        errors.push("Please select a valid difficulty level.");
+      }
+    
+      // Due Date Validation
+      const dueDateObj = new Date(dueDate);
+      if (!dueDate || isNaN(dueDateObj.getTime()) || dueDateObj < new Date()) {
+        errors.push("Due date must be a valid date in the future.");
+      }
+    
+      // Handle Errors
+      if (errors.length > 0) {
+        Swal.fire({
+          title: "Validation Error",
+          text: errors.join("\n"),
+          icon: "error",
+          confirmButtonText: "OK",
+        });
+        return;
+      }
+    
+
       const updateAssignment = {
             title,
             description,

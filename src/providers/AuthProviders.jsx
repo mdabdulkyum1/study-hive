@@ -87,12 +87,9 @@ function AuthProviders({ children }) {
             );
             setLoading(false);
           } else {
+            console.log("logout");
             // If user is logged out, call the logout endpoint
-            await axios.post(
-              `${import.meta.env.VITE_server_url}/logout`,
-              {},
-              { withCredentials: true }
-            );
+            await axios.post(`${import.meta.env.VITE_server_url}/logout`, {}, { withCredentials: true });
             setLoading(false);
           }
         } catch (error) {

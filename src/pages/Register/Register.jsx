@@ -69,6 +69,7 @@ const Register = () => {
       <Helmet>
         <title> Register | Study Hive</title>
       </Helmet>
+      
       <div className="hero min-h-screen bg-light-bg dark:bg-dark-bg">
         <div className="hero-content flex-col lg:flex-row-reverse gap-8">
           {/* Right-Side Image */}
@@ -77,11 +78,11 @@ const Register = () => {
           </div>
 
           {/* Left-Side Register Form */}
-          <div className="card w-full max-w-sm bg-light-bg dark:bg-dark-bg shadow-2xl">
+          <div className=" w-ful  bg-light-bg dark:bg-dark-bg shadow-2xl">
             <h1 className="text-3xl font-bold text-light-text dark:text-dark-text text-center my-4">
               Register Now!
             </h1>
-            <form onSubmit={handelRegister} className="card-body">
+            <form onSubmit={handelRegister} className="p-4">
               {/* Name Input */}
               <div className="form-control">
                 <label className="label">
@@ -179,6 +180,7 @@ const Register = () => {
           </div>
         </div>
       </div>
+
     </>
   );
 };

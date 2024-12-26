@@ -56,11 +56,11 @@ const Login = () => {
           </div>
 
           {/* Left-Side Login Form */}
-          <div className="card w-full max-w-sm bg-light-bg dark:bg-dark-bg shadow-2xl">
+          <div className="w-full max-w-sm bg-light-bg dark:bg-dark-bg shadow-2xl p-6">
             <h1 className="text-3xl font-bold text-light-text dark:text-dark-text text-center my-4">
               Login Now!
             </h1>
-            <form onSubmit={handelLogin} className="card-body">
+            <form onSubmit={handelLogin} className="">
               {/* Email Input */}
               <div className="form-control">
                 <label className="label">

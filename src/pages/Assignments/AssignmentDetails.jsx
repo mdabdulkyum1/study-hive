@@ -7,10 +7,11 @@ import { Helmet } from "react-helmet-async";
 const AssignmentDetails = () => {
   const assignment = useLoaderData();
 
-  const { title, marks, creator } = assignment || {};
+  const { title, marks,  } = assignment || {};
 
   const { user } = useAuth();
   const email = user?.email;
+  const eName = user?.displayName;
   const { id } = useParams();
   const startDate = new Date();
 
@@ -67,7 +68,7 @@ const AssignmentDetails = () => {
           title,
           totalMarks:marks,
           obtainedMarks:0,
-          examineeName: creator?.name,
+          examineeName: eName,
           googleDocsLink,
           quickNote,
           assignmentId: id,

@@ -15,10 +15,7 @@ function MyAttemptedAssignments() {
     queryKey: ["my-assignment"],
     queryFn: async () => {
       const response = await axios.get(
-        `${import.meta.env.VITE_server_url}/my-attempted-assignment?email=${
-          user?.email
-        }`
-      );
+        `${import.meta.env.VITE_server_url}/my-attempted-assignment?email=${user?.email}`, {withCredentials: true});
       return response.data;
     },
     enabled: !!user?.email,

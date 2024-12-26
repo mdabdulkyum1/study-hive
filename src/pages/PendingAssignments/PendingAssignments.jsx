@@ -17,8 +17,7 @@ function PendingAssignments() {
     queryKey: ["pending-assignments"],
     queryFn: async () => {
       const response = await axios.get(
-        `${import.meta.env.VITE_server_url}/my-attempted-assignment`
-      );
+        `${import.meta.env.VITE_server_url}/pending-assignment`);
       return response.data;
     },
   });
@@ -153,7 +152,7 @@ function PendingAssignments() {
               return false;
             }
 
-            if (!googleDocsLink || !quickNote) {
+            if (!marksVal || !feedbackInput) {
               Swal.showValidationMessage("Please fill out both fields!");
               return false;
             }

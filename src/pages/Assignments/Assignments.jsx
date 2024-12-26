@@ -137,7 +137,6 @@ const Assignments = () => {
             ref={searchRef}
             type="text"
             defaultValue={search}
-            onFocus={true}
             placeholder="Search assignments..."
             className="w-full px-4 py-2 rounded border border-gray-300 dark:border-gray-700 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary"
           />

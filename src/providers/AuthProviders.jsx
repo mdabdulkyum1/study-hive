@@ -71,30 +71,37 @@ function AuthProviders({ children }) {
   //   return () => unsubscribe();
   // }, []);
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+    const unsubscribe = onAuthStateChanged(auth,  (currentUser) => {
       setUser(currentUser); // Update user state
-      setLoading(false); // Stop loading once the user state is determined
+       // Stop loading once the user state is determined
   
-      try {
-        if (currentUser?.email) {
-          // If user is logged in, send their email to the server
-          const user = { email: currentUser.email };
-          await axios.post(
-            `${import.meta.env.VITE_server_url}/jwt`,
-            user,
-            { withCredentials: true }
-          );
-        } else {
-          // If user is logged out, call the logout endpoint
-          await axios.post(
-            `${import.meta.env.VITE_server_url}/logout`,
-            {},
-            { withCredentials: true }
-          );
+      const fetchDAta = async () => {
+        try {
+          if (currentUser?.email) {
+            // If user is logged in, send their email to the server
+            const user = { email: currentUser.email };
+            await axios.post(
+              `${import.meta.env.VITE_server_url}/jwt`,
+              user,
+              { withCredentials: true }
+            );
+            setLoading(false);
+          } else {
+            // If user is logged out, call the logout endpoint
+            await axios.post(
+              `${import.meta.env.VITE_server_url}/logout`,
+              {},
+              { withCredentials: true }
+            );
+            setLoading(false);
+          }
+        } catch (error) {
+          console.error("Error in API call:", error.message);
         }
-      } catch (error) {
-        console.error("Error in API call:", error.message);
+
       }
+
+      fetchDAta();
     });
   
     // Cleanup on unmount

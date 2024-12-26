@@ -8,7 +8,7 @@ const ContactUs = () => {
           <div className="max-w-lg mx-auto">
             <form action="#" method="POST">
               <div className="mb-6">
-                <label htmlFor="name" className="block text-lg font-medium text-light-text dark:text-dark-accent">
+                <label htmlFor="name" className="block text-lg font-medium text-light-text dark:text-primary">
                   Name
                 </label>
                 <input
@@ -22,7 +22,7 @@ const ContactUs = () => {
               </div>
   
               <div className="mb-6">
-                <label htmlFor="email" className="block text-lg font-medium text-light-text dark:text-dark-accent">
+                <label htmlFor="email" className="block text-lg font-medium text-light-text dark:text-primary">
                   Email
                 </label>
                 <input
@@ -36,7 +36,7 @@ const ContactUs = () => {
               </div>
   
               <div className="mb-6">
-                <label htmlFor="message" className="block text-lg font-medium text-light-text dark:text-dark-accent">
+                <label htmlFor="message" className="block text-lg font-medium text-light-text dark:text-primary">
                   Message
                 </label>
                 <textarea

@@ -9,7 +9,7 @@ const Faq = () => {
             {/* FAQ 1 */}
             <div className="collapse collapse-plus bg-base-200 dark:bg-gray-800">
               <input type="radio" name="my-accordion-3" defaultChecked />
-              <div className="collapse-title text-xl font-medium text-light-text dark:text-dark-accent">
+              <div className="collapse-title text-xl font-medium text-light-text dark:text-primary">
                 What is Study Hive?
               </div>
               <div className="collapse-content">
@@ -24,7 +24,7 @@ const Faq = () => {
             {/* FAQ 2 */}
             <div className="collapse collapse-plus bg-base-200 dark:bg-gray-800">
               <input type="radio" name="my-accordion-3" />
-              <div className="collapse-title text-xl font-medium text-light-text dark:text-dark-accent">
+              <div className="collapse-title text-xl font-medium text-light-text dark:text-primary">
                 How do I collaborate with friends on Study Hive?
               </div>
               <div className="collapse-content">
@@ -38,7 +38,7 @@ const Faq = () => {
             {/* FAQ 3 */}
             <div className="collapse collapse-plus bg-base-200 dark:bg-gray-800">
               <input type="radio" name="my-accordion-3" />
-              <div className="collapse-title text-xl font-medium text-light-text dark:text-dark-accent">
+              <div className="collapse-title text-xl font-medium text-light-text dark:text-primary">
                 Can I track my progress on assignments?
               </div>
               <div className="collapse-content">
@@ -52,7 +52,7 @@ const Faq = () => {
             {/* FAQ 4 */}
             <div className="collapse collapse-plus bg-base-200 dark:bg-gray-800">
               <input type="radio" name="my-accordion-3" />
-              <div className="collapse-title text-xl font-medium text-light-text dark:text-dark-accent">
+              <div className="collapse-title text-xl font-medium text-light-text dark:text-primary">
                 Is Study Hive free to use?
               </div>
               <div className="collapse-content">
@@ -67,7 +67,7 @@ const Faq = () => {
             {/* FAQ 5 */}
             <div className="collapse collapse-plus bg-base-200 dark:bg-gray-800">
               <input type="radio" name="my-accordion-3" />
-              <div className="collapse-title text-xl font-medium text-light-text dark:text-dark-accent">
+              <div className="collapse-title text-xl font-medium text-light-text dark:text-primary">
                 How secure is my data on Study Hive?
               </div>
               <div className="collapse-content">
@@ -81,7 +81,7 @@ const Faq = () => {
             {/* FAQ 6 */}
             <div className="collapse collapse-plus bg-base-200 dark:bg-gray-800">
               <input type="radio" name="my-accordion-3" />
-              <div className="collapse-title text-xl font-medium text-light-text dark:text-dark-accent">
+              <div className="collapse-title text-xl font-medium text-light-text dark:text-primary">
                 Can I create my own study groups?
               </div>
               <div className="collapse-content">

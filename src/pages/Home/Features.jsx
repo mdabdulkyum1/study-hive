@@ -10,9 +10,9 @@ const Features = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div className="p-6 bg-white dark:bg-gray-800 shadow-lg rounded-lg text-center border-2 border-primary dark:border-primary">
             <div className="mb-4">
-              <FaUsers className="w-16 h-16 mx-auto text-primary dark:text-dark-accent" />
+              <FaUsers className="w-16 h-16 mx-auto text-primary " />
             </div>
-            <h3 className="text-xl font-semibold text-light-text dark:text-dark-accent">
+            <h3 className="text-xl font-semibold text-light-text dark:text-primary">
               Seamless Collaboration
             </h3>
             <p className="text-light-text dark:text-gray-200 mt-2">
@@ -22,9 +22,9 @@ const Features = () => {
 
           <div className="p-6 bg-white dark:bg-gray-800 shadow-lg rounded-lg text-center border-2 border-primary dark:border-primary">
             <div className="mb-4">
-              <FaChartLine className="w-16 h-16 mx-auto text-primary dark:text-dark-accent" />
+              <FaChartLine className="w-16 h-16 mx-auto text-primary" />
             </div>
-            <h3 className="text-xl font-semibold text-light-text dark:text-dark-accent">
+            <h3 className="text-xl font-semibold text-light-text dark:text-primary">
               Progress Tracking
             </h3>
             <p className="text-light-text dark:text-gray-200 mt-2">
@@ -34,9 +34,9 @@ const Features = () => {
 
           <div className="p-6 bg-white dark:bg-gray-800 shadow-lg rounded-lg text-center border-2 border-primary dark:border-primary">
             <div className="mb-4">
-              <FaChalkboardTeacher className="w-16 h-16 mx-auto text-primary dark:text-dark-accent" />
+              <FaChalkboardTeacher className="w-16 h-16 mx-auto text-primary dark:text-primary" />
             </div>
-            <h3 className="text-xl font-semibold text-light-text dark:text-dark-accent">
+            <h3 className="text-xl font-semibold text-light-text dark:text-primary">
               Interactive Learning
             </h3>
             <p className="text-light-text dark:text-gray-200 mt-2">
@@ -46,9 +46,9 @@ const Features = () => {
 
           <div className="p-6 bg-white dark:bg-gray-800 shadow-lg rounded-lg text-center border-2 border-primary dark:border-primary">
             <div className="mb-4">
-              <FaClipboardList className="w-16 h-16 mx-auto text-primary dark:text-dark-accent" />
+              <FaClipboardList className="w-16 h-16 mx-auto text-primary dark:text-primary" />
             </div>
-            <h3 className="text-xl font-semibold text-light-text dark:text-dark-accent">
+            <h3 className="text-xl font-semibold text-light-text dark:text-primary">
               Peer Grading
             </h3>
             <p className="text-light-text dark:text-gray-200 mt-2">
@@ -58,9 +58,9 @@ const Features = () => {
 
           <div className="p-6 bg-white dark:bg-gray-800 shadow-lg rounded-lg text-center border-2 border-primary dark:border-primary">
             <div className="mb-4">
-              <FaBell className="w-16 h-16 mx-auto text-primary dark:text-dark-accent" />
+              <FaBell className="w-16 h-16 mx-auto text-primary dark:text-primary" />
             </div>
-            <h3 className="text-xl font-semibold text-light-text dark:text-dark-accent">
+            <h3 className="text-xl font-semibold text-light-text dark:text-primary">
               Notifications
             </h3>
             <p className="text-light-text dark:text-gray-200 mt-2">
@@ -70,9 +70,9 @@ const Features = () => {
 
           <div className="p-6 bg-white dark:bg-gray-800 shadow-lg rounded-lg text-center border-2 border-primary dark:border-primary">
             <div className="mb-4">
-              <FaLock className="w-16 h-16 mx-auto text-primary dark:text-dark-accent" />
+              <FaLock className="w-16 h-16 mx-auto text-primary dark:text-primary" />
             </div>
-            <h3 className="text-xl font-semibold text-light-text dark:text-dark-accent">
+            <h3 className="text-xl font-semibold text-light-text dark:text-primary">
               Secure Platform
             </h3>
             <p className="text-light-text dark:text-gray-200 mt-2">

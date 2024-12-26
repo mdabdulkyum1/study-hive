@@ -48,89 +48,102 @@ const Login = () => {
       <Helmet>
         <title>Login | Study Hive</title>
       </Helmet>
-      <div className="hero min-h-screen bg-light-bg dark:bg-dark-bg">
-        <div className="hero-content flex-col lg:flex-row-reverse gap-8">
-          {/* Right-Side Image */}
-          <div className="w-full lg:w-1/2">
-            <Lottie animationData={loginAnim} loop={true}></Lottie>
+      <div className="hero min-h-screen bg-light-bg dark:bg-dark-bg transition-colors">
+        <div className="hero-content flex flex-col-reverse lg:flex-row items-center gap-8 lg:gap-16 px-4 sm:px-8 lg:px-16">
+          {/* Right-Side Animation/Image */}
+          <div className="w-full lg:w-1/2 flex justify-center">
+            <Lottie
+              animationData={loginAnim}
+              loop={true}
+              className="max-w-xs sm:max-w-sm lg:max-w-lg"
+            />
           </div>
 
           {/* Left-Side Login Form */}
-          <div className="w-full max-w-sm bg-light-bg dark:bg-dark-bg shadow-2xl p-6">
-            <h1 className="text-3xl font-bold text-light-text dark:text-dark-text text-center my-4">
-              Login Now!
-            </h1>
-            <form onSubmit={handelLogin} className="">
-              {/* Email Input */}
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text text-light-text dark:text-dark-text">
-                    Email
-                  </span>
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Enter your email"
-                  className="input input-bordered bg-light-bg dark:bg-dark-bg text-light-text dark:text-dark-text"
-                  required
-                />
-              </div>
-
-              {/* Password Input with Toggle */}
-              <div className="form-control relative">
-                <label className="label">
-                  <span className="label-text text-light-text dark:text-dark-text">
-                    Password
-                  </span>
-                </label>
-                <div className="relative">
+          <div className="card w-full lg:w-1/2 shadow-xl rounded-lg bg-light-bg dark:bg-dark-bg transition-colors">
+            <div className="card-body p-6 sm:p-8 lg:p-10">
+              <h1 className="text-2xl sm:text-3xl font-bold text-center mb-6 text-light-text dark:text-dark-text">
+                Login Now!
+              </h1>
+              <form onSubmit={handelLogin}>
+                {/* Email Input */}
+                <div className="form-control mb-4">
+                  <label className="label">
+                    <span className="label-text text-light-text dark:text-dark-text">
+                      Email
+                    </span>
+                  </label>
                   <input
-                    type={showPassword ? "text" : "password"}
-                    name="password"
-                    placeholder="Enter your password"
-                    className="input input-bordered bg-light-bg dark:bg-dark-bg text-light-text dark:text-dark-text pr-10 w-full"
+                    type="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    className="input input-bordered w-full text-light-text dark:text-dark-text bg-light-bg dark:bg-dark-bg border-light-border dark:border-dark-border"
                     required
                   />
-                  {/* Toggle Button */}
-                  <div
-                    onClick={togglePasswordVisibility}
-                    className="absolute inset-y-0 right-3 flex items-center cursor-pointer text-light-text dark:text-dark-text"
-                  >
-                    {showPassword ? <FaEyeSlash /> : <FaEye />}
+                </div>
+
+                {/* Password Input with Toggle */}
+                <div className="form-control mb-4">
+                  <label className="label">
+                    <span className="label-text text-light-text dark:text-dark-text">
+                      Password
+                    </span>
+                  </label>
+                  <div className="relative">
+                    <input
+                      type={showPassword ? "text" : "password"}
+                      name="password"
+                      placeholder="Enter your password"
+                      className="input input-bordered w-full pr-12 text-light-text dark:text-dark-text bg-light-bg dark:bg-dark-bg border-light-border dark:border-dark-border"
+                      required
+                    />
+                    <div
+                      onClick={togglePasswordVisibility}
+                      className="absolute inset-y-0 right-4 flex items-center cursor-pointer text-light-text dark:text-dark-text"
+                    >
+                      {showPassword ? <FaEyeSlash /> : <FaEye />}
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Forgot Password Link */}
-              <label className="label">
-                <a
-                  href="#"
-                  className="label-text-alt link link-hover text-light-accent dark:text-dark-accent"
-                >
-                  Forgot password?
-                </a>
-              </label>
+                {/* Forgot Password Link */}
+                <div className="form-control mb-6">
+                  <label className="label">
+                    <a
+                      href="#"
+                      className="label-text-alt link link-hover text-sm text-light-accent dark:text-dark-accent"
+                    >
+                      Forgot password?
+                    </a>
+                  </label>
+                </div>
 
-              {/* Login Button */}
-              <div className="form-control mt-6">
-                <button className="btn bg-primary text-white hover:bg-light-accent dark:hover:bg-dark-accent">
-                  Login
-                </button>
-              </div>
-              <div className="divider">or</div>
-              <GoogleLogin></GoogleLogin>
-              {/* Redirect to Register */}
-              <p className="text-center mt-4 text-gray-600">
-                Don{`'`}t have an account?{" "}
-                <Link
-                  to="/register"
-                  className="text-primary font-bold hover:underline"
-                >
-                  Register here
-                </Link>
-              </p>
-            </form>
+                {/* Login Button */}
+                <div className="form-control mb-4">
+                  <button className="btn w-full bg-primary text-white hover:bg-opacity-90">
+                    Login
+                  </button>
+                </div>
+
+                {/* Divider */}
+                <div className="divider text-light-text dark:text-dark-text">
+                  or
+                </div>
+
+                {/* Google Login */}
+                <div className="form-control mb-4">
+                  <GoogleLogin />
+                </div>
+
+                {/* Redirect to Register */}
+                <p className="text-center text-sm text-light-text dark:text-dark-text">
+                  Don{`'`}t have an account?{" "}
+                  <Link to="/register" className="link link-primary font-bold">
+                    Register here
+                  </Link>
+                </p>
+              </form>
+            </div>
           </div>
         </div>
       </div>

@@ -3,6 +3,9 @@ import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import TableLoading from "../../components/shared/TableLoading/TableLoading";
 import { Helmet } from "react-helmet-async";
+import Lottie from "lottie-react";
+import dataNotFoundAnim from "../../../public/lottie/dataNotFound.json";
+
 
 function MyAttemptedAssignments() {
   const { user } = useAuth();
@@ -34,7 +37,11 @@ function MyAttemptedAssignments() {
 
   // Handle case where no assignments are available
   if (!attemptedAssignments || attemptedAssignments.length === 0) {
-    return <div>No attempted assignments found.</div>;
+    return <div className="flex justify-center ">
+    <div className="w-full md:w-1/2">
+      <Lottie animationData={dataNotFoundAnim} loop={true}></Lottie>
+    </div>
+  </div>
   }
 
   return (

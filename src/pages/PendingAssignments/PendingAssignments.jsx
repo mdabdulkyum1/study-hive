@@ -17,7 +17,8 @@ function PendingAssignments() {
     queryKey: ["pending-assignments"],
     queryFn: async () => {
       const response = await axios.get(
-        `${import.meta.env.VITE_server_url}/pending-assignment`);
+        `${import.meta.env.VITE_server_url}/pending-assignment`
+      );
       return response.data;
     },
   });
@@ -33,25 +34,9 @@ function PendingAssignments() {
   const pendingAssignments = assignments?.filter(
     (assignment) => assignment.status === "pending"
   );
-  if (!pendingAssignments || pendingAssignments.length === 0) {
-    return (
-      <>
-      <Helmet>
-        <title> Pending Assignments | Study Hive</title>
-      </Helmet>
-      <div className="h-[60vh] my-7">
-        <div className="flex items-center justify-center">
-          <img
-            src={noPending}
-            alt="Not found"
-            className="h-[430px] rounded-2xl"
-          />
-        </div>
-      </div>
-      </>
-
-    );
-  }
+  const completeAssignments = assignments?.filter(
+    (assignment) => assignment.status === "complete"
+  );
 
   const handelGiveMark = async (id) => {
     try {
@@ -73,7 +58,7 @@ function PendingAssignments() {
   <div class="flex flex-col">
     <label
       for="google-docs-link"
-      class="text-gray-700 dark:text-gray-300 text-sm font-medium mb-1"
+      class="text-gray-700 dark:text-gray-800 text-sm font-medium mb-1"
     >
       Google Docs Link
     </label>
@@ -91,7 +76,7 @@ function PendingAssignments() {
   <div class="flex flex-col">
     <label
       for="quick-note"
-      class="text-gray-700 dark:text-gray-300 text-sm font-medium mb-1"
+      class="text-gray-700 dark:text-gray-800 text-sm font-medium mb-1"
     >
       Examinee's Note
     </label>
@@ -102,7 +87,7 @@ function PendingAssignments() {
   <div class="flex flex-col">
     <label
       for="marks-input"
-      class="text-gray-700 dark:text-gray-300 text-sm font-medium mb-1"
+      class="text-gray-700 dark:text-gray-800 text-sm font-medium mb-1"
     >
       Marks
     </label>
@@ -120,7 +105,7 @@ function PendingAssignments() {
   <div class="flex flex-col">
     <label
       for="feedback-input"
-      class="text-gray-700 dark:text-gray-300 text-sm font-medium mb-1"
+      class="text-gray-700 dark:text-gray-800 text-sm font-medium mb-1"
     >
       Feedback
     </label>
@@ -242,25 +227,84 @@ function PendingAssignments() {
                 </th>
               </tr>
             </thead>
+
+            {pendingAssignments.length > 0 ? (
+              <tbody>
+                {pendingAssignments.map((assignment) => (
+                  <tr key={assignment._id}>
+                    <td className="border px-4 py-2 text-light-text dark:text-dark-text">
+                      {assignment.title || "No Title"}
+                    </td>
+                    <td className="border px-4 py-2 text-light-text dark:text-dark-text">
+                      {assignment.totalMarks || "Not Assigned"}
+                    </td>
+                    <td className="border px-4 py-2 text-light-text dark:text-dark-text">
+                      {assignment.examineeName || "Unknown"}
+                    </td>
+                    <td className="border px-4 py-2 text-light-text dark:text-dark-text">
+                      <button
+                        onClick={() => handelGiveMark(assignment._id)}
+                        className="px-4 py-2 bg-primary text-white rounded hover:bg-accent"
+                      >
+                        Give Mark
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            ) : (
+              <div className="h-[60vh] my-7">
+                <div className="flex items-center justify-center">
+                  <img
+                    src={noPending}
+                    alt="Not found"
+                    className="h-[430px] rounded-2xl"
+                  />
+                </div>
+              </div>
+            )}
+          </table>
+        </div>
+        <div className="overflow-x-auto">
+          <table className="table-auto w-full border-collapse border border-light-border dark:border-dark-border">
+            <thead>
+              <tr>
+                <th className="border px-4 py-2 text-left text-light-text dark:text-dark-text">
+                  Assignment Title
+                </th>
+                <th className="border px-4 py-2 text-left text-light-text dark:text-dark-text">
+                  Marks (Obtained / Total)
+                </th>
+                <th className="border px-4 py-2 text-left text-light-text dark:text-dark-text">
+                  Examinee Name
+                </th>
+                <th className="border px-4 py-2 text-left text-light-text dark:text-dark-text">
+                  Feedback
+                </th>
+                <th className="border px-4 py-2 text-left text-light-text dark:text-dark-text">
+                  Status
+                </th>
+              </tr>
+            </thead>
             <tbody>
-              {pendingAssignments.map((assignment) => (
-                <tr key={assignment._id}>
+              {completeAssignments.map((assignment) => (
+                <tr key={assignment._id.$oid}>
                   <td className="border px-4 py-2 text-light-text dark:text-dark-text">
                     {assignment.title || "No Title"}
                   </td>
                   <td className="border px-4 py-2 text-light-text dark:text-dark-text">
-                    {assignment.totalMarks || "Not Assigned"}
+                    {assignment.obtainedMarks || 0} /{" "}
+                    {assignment.totalMarks || "N/A"}
                   </td>
                   <td className="border px-4 py-2 text-light-text dark:text-dark-text">
                     {assignment.examineeName || "Unknown"}
                   </td>
                   <td className="border px-4 py-2 text-light-text dark:text-dark-text">
-                    <button
-                      onClick={() => handelGiveMark(assignment._id)}
-                      className="px-4 py-2 bg-primary text-white rounded hover:bg-accent"
-                    >
-                      Give Mark
-                    </button>
+                    {assignment.feedBack || "No Feedback"}
+                  </td>
+                  <td className="border px-4 py-2 text-light-text dark:text-dark-text flex items-center">
+                    <span className="h-3 w-3 rounded-full bg-green-500 mr-2"></span>
+                    <span>Completed</span>
                   </td>
                 </tr>
               ))}

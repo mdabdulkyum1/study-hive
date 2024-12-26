@@ -1,4 +1,4 @@
-import { useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
@@ -6,7 +6,7 @@ import { Helmet } from "react-helmet-async";
 
 const AssignmentDetails = () => {
   const assignment = useLoaderData();
-
+  const navigate = useNavigate();
   const { title, marks,  } = assignment || {};
 
   const { user } = useAuth();
@@ -22,7 +22,7 @@ const AssignmentDetails = () => {
        <form id="assignment-form" class="space-y-4">
   <!-- Google Docs Link -->
   <div class="flex flex-col">
-    <label for="google-docs-link" class="text-gray-700 dark:text-gray-300 text-sm font-medium mb-1">
+    <label for="google-docs-link" class="text-gray-700 dark:text-gray-800 text-sm font-medium mb-1">
       Google Docs Link
     </label>
     <input 
@@ -36,7 +36,7 @@ const AssignmentDetails = () => {
 
   <!-- Quick Note -->
   <div class="flex flex-col">
-    <label for="quick-note" class="text-gray-700 dark:text-gray-300 text-sm font-medium mb-1">
+    <label for="quick-note" class="text-gray-700 dark:text-gray-800 text-sm font-medium mb-1">
       Quick Note
     </label>
     <textarea 
@@ -104,6 +104,7 @@ const AssignmentDetails = () => {
           title: "Assignment Submitted!",
           text: `Assignment successfully Done!`,
         });
+        navigate('/my-attempted-assignments');
       }
     }
   };

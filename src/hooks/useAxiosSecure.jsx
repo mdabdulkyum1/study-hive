@@ -18,7 +18,6 @@ const useAxiosSecure = () => {
         return res;
       },
       (error) => {
-        console.log("error caught form interceptors >>-", error);
 
         if (error.response.status === 401 || error.response.status === 403) {
             logOut()

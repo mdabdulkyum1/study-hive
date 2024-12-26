@@ -28,6 +28,28 @@ The Online Group-Study web application allows users to collaborate with their fr
 - **JWT**: JSON Web Tokens for secure authentication
 - **Database**: MongoDB
 - **Hosting**: Firebase, Netlify, or Surge for frontend and backend
+## Npm packages 
+- **Backend**: Node.js, Express.js
+- **Database**: MongoDB
+- **Authentication**: Firebase, JWT, bcryptjs
+- **Utilities**: `dotenv`, `cors`
+- **Frontend Utilities**:
+  - `@tanstack/react-query`
+  - `axios`
+  - `localforage`
+  - `lodash`
+  - `lottie-react`
+  - `match-sorter`
+  - `react`
+  - `react-datepicker`
+  - `react-dom`
+  - `react-helmet-async`
+  - `react-icons`
+  - `react-router-dom`
+  - `react-tooltip`
+  - `sort-by`
+  - `sweetalert2`
+  - `swiper`
 
 ## Features Breakdown
 

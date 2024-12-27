@@ -45,8 +45,8 @@ function CreateAssignments() {
   
     // Marks Validation
     const marksValue = parseFloat(defaultMarks);
-    if (isNaN(marksValue) || marksValue < 0 || marksValue > 100) {
-      errors.push("Marks must be a number between 0 and 100.");
+    if (isNaN(marksValue) || marksValue < 60 || marksValue > 100) {
+      errors.push("Marks must be a number between 60 and 100.");
     }
   
     // Thumbnail URL Validation

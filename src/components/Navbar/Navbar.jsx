@@ -35,20 +35,43 @@ const Navbar = () => {
           Assignments
         </NavLink>
       </li>
-    {
-      user && 
+      {user && (
+        <li>
+          <NavLink
+            to="/pending-assignments"
+            className="text-light-text dark:text-dark-text hover:text-light-accent dark:hover:text-dark-accent transition"
+          >
+            Pending Assignments
+          </NavLink>
+        </li>
+      )}
       <li>
         <NavLink
-          to="/pending-assignments"
+          to="/resources"
           className="text-light-text dark:text-dark-text hover:text-light-accent dark:hover:text-dark-accent transition"
         >
-          Pending Assignments
+          Resources
         </NavLink>
       </li>
-    }
-
+      <li>
+        <NavLink
+          to="/about"
+          className="text-light-text dark:text-dark-text hover:text-light-accent dark:hover:text-dark-accent transition"
+        >
+          About
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/contact"
+          className="text-light-text dark:text-dark-text hover:text-light-accent dark:hover:text-dark-accent transition"
+        >
+          Contact
+        </NavLink>
+      </li>
     </>
   );
+  
   const dropdownLinks = (
     <>
       <li>

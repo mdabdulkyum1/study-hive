@@ -1,5 +1,13 @@
 # Online Group-Study Web Application
 # Study Hive 
+
+
+
+<div align="center">
+  <img height="500"  src="https://i.ibb.co.com/gb6CbcZr/Fire-Shot-Capture-057-Home-Study-Hive-studyhive-eb8d9-web-app.png"  />
+</div>
+
+
 ## Purpose
 
 The Online Group-Study web application allows users to collaborate with their friends by creating assignments, completing them, and grading others' submissions. This platform encourages group study, where users can track their progress, submit assignments, and provide feedback to their peers.
@@ -90,3 +98,10 @@ The Online Group-Study web application allows users to collaborate with their fr
 - **MongoDB Credentials**: MongoDB credentials are stored securely in environment variables.
 - **JWT Tokens**: JWT tokens are used for authentication in private routes, ensuring only authorized users can access certain pages.
 
+## add .env for firebase config like 
+  - apiKey: import.meta.env.VITE_apiKey,
+  - authDomain: import.meta.env.VITE_authDomain,
+  - projectId: import.meta.env.VITE_projectId,
+  - storageBucket: import.meta.env.VITE_storageBucket,
+  - messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  - appId: import.meta.env.VITE_appId,

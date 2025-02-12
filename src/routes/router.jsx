@@ -12,6 +12,8 @@ import UpdateAssignment from "../pages/Assignments/UpdateAssignment";
 import AssignmentDetails from "../pages/Assignments/AssignmentDetails";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Resources from "../pages/Resources/Resources";
+import About from "../pages/About/About";
+import Contact from "../pages/Contact/Contact";
 
 const router = createBrowserRouter([
   {
@@ -28,11 +30,11 @@ const router = createBrowserRouter([
       },
       {
         path: "about",
-        element: <Resources></Resources>
+        element: <About></About>
       },
       {
         path: "contact",
-        element: <Resources></Resources>
+        element: <Contact></Contact>
       },
       {
         path: "create-assignments",

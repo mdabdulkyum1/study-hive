@@ -4,7 +4,7 @@ import useAuth from "./useAuth";
 import axios from "axios";
 
 export const axiosInstance = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: "https://study-hive-omega.vercel.app",
   withCredentials: true,
 });
 
